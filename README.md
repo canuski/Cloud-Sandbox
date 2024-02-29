@@ -41,5 +41,13 @@ For each test I can write scripts and organize them into framworks like unittest
 
 Framework choice
 ---------------------------------------
-Pytest is my first choice due to its east of use, powerful features and its integration into the Python ecosystem that I'll be using
+Pytest is my first choice due to its east of use, powerful features and its integration into the Python ecosystem that I'll be using]
+
+
+Tasks
+---------------------------------------
+1. Develop the clamav tests in an ubuntu vm, because its mafe for linux not windows
+2. check for other tests
+3. ...
+4. last step will be deploying to cloud
 
