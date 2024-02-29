@@ -28,8 +28,8 @@ Research
 
 Tests in Python
 ---------------------------------------
-1. Clamav: antivirus scanning
-2. Pytestseract: OCR based security checks (extract text, logos, and other identifiable objects from images)
+1. Clamav: antivirus scanning https://docs.clamav.net/
+2. Pytestseract: OCR based security checks (extract text, logos, and other identifiable objects from images) 
 3. Checksums maken en vergelijken voor en na processing - haslib
 4. Pylint, flake8 or bandit for code analyse.
 5. Time, timeit for execution time and performace can be done with psutil.
