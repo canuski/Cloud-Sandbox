@@ -2,10 +2,9 @@ import clamd
 import os
 
 # Initialize Clamd scanner
-# Adjust the socket path as per your system configuration
-clamd_socket = "/var/run/clamav/clamd.sock"
-clamd_conn = clamd.ClamdUnixSocket(clamd_socket)
-
+clamd_host = "127.0.0.1"  # Clamd server host (adjust as needed)
+clamd_port = 3310  # Clamd server port (adjust as needed)
+clamd_conn = clamd.ClamdNetworkSocket(clamd_host, clamd_port)
 
 def test_virus_scan():
     # Define a list of test files with different file types
@@ -20,17 +19,20 @@ def test_virus_scan():
         # Ensure the file exists
         assert os.path.exists(file_path), f"File '{file_path}' does not exist."
 
-        # Scan the file for viruses
-        result = clamd_conn.scan_file(file_path)
+        # Open the file and read its contents
+        with open(file_path, "rb") as file:
+            file_content = file.read()
+
+        # Scan the file contents for viruses
+        result = clamd_conn.instream(file_content)
 
         # Check if the scan result indicates the presence of a virus
-        if "FOUND" in result[file_path]:
+        if "FOUND" in result[0]:
             # If a virus is found, mark the test as failed
-            assert False, f"Virus detected in file '{file_path}': {result[file_path]}"
+            assert False, f"Virus detected in file '{file_path}': {result[1]}"
 
         # Print scan result (for debugging purposes)
-        print(f"Scan result for '{file_path}': {result[file_path]}")
-
+        print(f"Scan result for '{file_path}': {result[1]}")
 
 # Run the test
 test_virus_scan()
