@@ -7,7 +7,7 @@ Research
 
 - Which OS?
   - There are many types of systems out there, I prefer Linux due to its accessablitiy and ease of use, I might run into problems if I want to use windows specific libraries though.
-  - I considered useing Rocky 9 because I love it for some reason but I'll start out using a simple ubunut server, due to how widley known and used it is.
+  - I considered useing Rocky 9 because I love it for some reason but I'll start out using a simple ubuntu server, due to how widley known and used it is.
 - Language?
   - Python: I know it well and telegram intergration is easy. 
 - Cloud platform?
