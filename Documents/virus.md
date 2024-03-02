@@ -39,7 +39,10 @@ Notes for self
 - sudo apt install clamav-daemon
 - sudo systemctl start clamav-daemon ==always!
 - clamd_socket = "/var/run/clamav/clamd.ctl" ==in python code!
-- **Making a service**
-- s141479@canuski-virtual-machine:/etc/systemd/system$ sudo nano virusscanner.service
+- sudo snap install docker
+- sudo docker build -t scripts .
 - 
 
+Problems
+-------------
+1. Requiments.txt, dotenv gives error
