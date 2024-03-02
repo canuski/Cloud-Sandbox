@@ -3,22 +3,27 @@ import subprocess
 import os
 from telegram_sender import send_telegram_msg
 
+scanned_files = set()  # Keep track of scanned files
+
 async def scan_file(file_name):
+    if file_name in scanned_files:
+        return  # Skip scanning if file has already been scanned
     try:
         result = subprocess.run(['clamscan', '--no-summary', '--verbose', file_name], capture_output=True, text=True)
         output = result.stdout + result.stderr
-        print(output)  # Print output to terminal
         await send_telegram_msg(output)
+        scanned_files.add(file_name)  # Add file to set of scanned files
     except FileNotFoundError:
         print('ClamAV is not installed or not in the PATH.')
 
 async def scan_directory(directory):
     try:
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                file_path = os.path.join(root, file)
-                print(f"Scanning file: {file_path}")
-                await scan_file(file_path)  # Await scan_file
+        while True:  # Continuous loop
+            for root, dirs, files in os.walk(directory):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    await scan_file(file_path)  # Await scan_file
+            await asyncio.sleep(10)  # Wait for 10 seconds before scanning again
     except Exception as e:
         print(f"Error scanning directory: {e}")
 
