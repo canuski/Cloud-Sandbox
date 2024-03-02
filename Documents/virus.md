@@ -41,7 +41,7 @@ Notes for self
 - clamd_socket = "/var/run/clamav/clamd.ctl" ==in python code!
 - sudo snap install docker
 - sudo docker build -t scripts .
-- 
+- sudo docker run -d scripts
 
 Problems
 -------------
