@@ -1,11 +1,13 @@
+#!/usr/bin/python3
 import asyncio
 import subprocess
 import os
 from telegram_sender import send_telegram_msg
 
 scanned_files = set()  # Keep track of scanned files
-
+print("virus scan started")
 async def scan_file(file_name):
+    print("in scan_file")
     if file_name in scanned_files:
         return  # Skip scanning if file has already been scanned
     try:
@@ -13,6 +15,7 @@ async def scan_file(file_name):
         output = result.stdout + result.stderr
         await send_telegram_msg(output)
         scanned_files.add(file_name)  # Add file to set of scanned files
+        print('scanned file')
     except FileNotFoundError:
         print('ClamAV is not installed or not in the PATH.')
 
@@ -26,10 +29,14 @@ async def scan_directory(directory):
             await asyncio.sleep(10)  # Wait for 10 seconds before scanning again
     except Exception as e:
         print(f"Error scanning directory: {e}")
+        
 
 async def main():
-    directory = "../test_files/"
+    print("in main function")
+    directory = '/root/files/'
     await scan_directory(directory)
+    print("after directory scan")
 
 if __name__ == "__main__":
+    print("asyncio start")
     asyncio.run(main())

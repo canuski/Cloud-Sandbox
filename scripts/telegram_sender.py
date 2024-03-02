@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import telegram 
 import telegram.constants 
 import os
