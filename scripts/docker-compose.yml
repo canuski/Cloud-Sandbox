@@ -9,8 +9,8 @@ services:
       - clamav
 
   clamav:
-    image: clamav/clamav
-    volumes:
-      - /var/log/clamav:/var/log/clamav
+    image: mkodockx/docker-clamav:alpine
     restart: unless-stopped
-    command: ["freshclam"]
+    volumes:
+    - /var/lib/clamav:/var/lib/clamav
+    command: ["sh", "-c", "freshclam && clamd"]
