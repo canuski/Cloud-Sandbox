@@ -14,10 +14,13 @@ RUN apt-get update && \
 COPY virus_scan_script.py /app/
 COPY telegram_sender.py /app/
 COPY requirements.txt /app/
+COPY .env /app/.env
+COPY clamd.conf /etc/clamav/clamd.conf
+
 
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir --upgrade pip setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the script when the container launches
-ENTRYPOINT ["python3", "virus_scan_script.py"]
+CMD ["python3", "virus_scan_script.py"]

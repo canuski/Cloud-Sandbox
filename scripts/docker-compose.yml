@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  virus_scanner:
+    image: scripts:latest
+    volumes:
+      - /home/s141479/Projects/Sandbox/Cloud-Sandbox/scripts/test_files/:/app/test_files
+    depends_on:
+      - clamav
+
+  clamav:
+    image: clamav/clamav
+    volumes:
+      - /var/log/clamav:/var/log/clamav
+    restart: unless-stopped
+    command: ["freshclam"]

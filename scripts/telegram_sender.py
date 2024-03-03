@@ -2,13 +2,13 @@
 import telegram 
 import telegram.constants 
 import os
-from dotenv import load_dotenv
+# rom dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+# load_dotenv()
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_BOT_TOKEN = '6730417267:AAHoVCAAI1kywQLDuW-2pHPxrnPLIfv3G0c'
+TELEGRAM_CHAT_ID = '-1002102767348'
 
 async def send_telegram_msg(msg):
     bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)

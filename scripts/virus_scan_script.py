@@ -33,7 +33,7 @@ async def scan_directory(directory):
 
 async def main():
     print("in main function")
-    directory = '/root/files/'
+    directory = os.path.abspath('test_files/')
     await scan_directory(directory)
     print("after directory scan")
 
