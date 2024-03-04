@@ -42,6 +42,7 @@ Notes for self
 - sudo snap install docker
 - sudo docker build -t scripts .
 - sudo docker run -d scripts
+- sudo docker compose up -d
 
 Problems
 -------------
