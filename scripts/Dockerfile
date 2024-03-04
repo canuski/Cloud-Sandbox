@@ -22,5 +22,8 @@ COPY clamd.conf /etc/clamav/clamd.conf
 RUN pip install --no-cache-dir --upgrade pip setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Needed for database refresh
+RUN freshclam
+
 # Run the script when the container launches
 CMD ["python3", "virus_scan_script.py"]

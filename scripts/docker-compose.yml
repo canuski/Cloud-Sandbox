@@ -8,9 +8,9 @@ services:
     depends_on:
       - clamav
 
+
   clamav:
     image: mkodockx/docker-clamav:alpine
     restart: unless-stopped
     volumes:
     - /var/lib/clamav:/var/lib/clamav
-    command: ["sh", "-c", "freshclam && clamd"]
